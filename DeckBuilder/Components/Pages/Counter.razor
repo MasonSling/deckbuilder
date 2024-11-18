@@ -1,0 +1,181 @@
+﻿@page "/counter"
+
+@page "/deck-manager"
+@using System.Text
+@using System.Text.Json
+@using System.IO
+@using Microsoft.AspNetCore.Components.Forms
+@using DeckBuilder.Models
+
+<h3>Deck Manager</h3>
+
+<div class="mb-4">
+    <InputFile OnChange="HandleFileUpload" accept=".csv" />
+    <button class="btn btn-primary" @onclick="ShuffleDeck">Shuffle Deck</button>
+</div>
+
+@if(Deck.Count > 0)
+{
+    <p>Deck has @Deck.Count.ToString() cards</p>
+}
+
+<div class="mb-3">
+    <h5>Actions</h5>
+    <button class="btn btn-success" @onclick="DrawCard">Draw Card</button>
+    <button class="btn btn-danger" @onclick="DiscardCard" disabled="@(!CanDiscard)">Discard Card</button>
+</div>
+
+<div class="mb-3">
+    <h5>Add Card</h5>
+    <div class="input-group mb-2">
+        <input type="text" class="form-control" placeholder="Name" @bind="NewCard.Name" />
+        <input type="number" class="form-control" placeholder="Cost" @bind="NewCard.Cost" />
+        <input type="text" class="form-control" placeholder="Type" @bind="NewCard.Type" />
+        <input type="text" class="form-control" placeholder="Text" @bind="NewCard.Text" />
+        <button class="btn btn-primary" @onclick="AddCard">Add Card</button>
+    </div>
+</div>
+
+<div class="mb-3">
+    <h5>Deck</h5>
+    @if (Deck.Any())
+    {
+        <ul class="list-group">
+            @foreach (var card in Deck)
+            {
+                <li class="list-group-item">
+                    <strong>@card.Name</strong> - Cost: @card.Cost, Type: @card.Type, Text: @card.Text
+                    <button class="btn btn-sm btn-danger float-end" @onclick="(() => RemoveCard(card))">Remove</button>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No cards in the deck.</p>
+    }
+</div>
+
+<div class="mb-3">
+    <h5>Discard Pile</h5>
+    @if (DiscardPile.Any())
+    {
+        <ul class="list-group">
+            @foreach (var card in DiscardPile)
+            {
+                <li class="list-group-item">@card.Name</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Discard pile is empty.</p>
+    }
+</div>
+
+@code {
+    private List<CardModel> Deck = new();
+    private List<CardModel> DiscardPile = new();
+    private CardModel? NewCard = new CardModel();
+    private bool CanDiscard => DiscardPile.Any();
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+
+            // Set a reasonable limit for the file size (e.g., 1 MB)
+            using var stream = file.OpenReadStream(maxAllowedSize: 1024 * 1024); // 1 MB
+            using var reader = new StreamReader(stream);
+
+            while (true)
+            {
+                var line = await reader.ReadLineAsync(); // Asynchronous reading
+                if (line == null) // End of stream
+                    break;
+
+                if (!string.IsNullOrWhiteSpace(line))
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length == 4)
+                    {
+                        if (int.TryParse(parts[1], out int cost))
+                        {
+                            Deck.Add(new CardModel
+                                {
+                                    Name = parts[0].Trim(),
+                                    Cost = cost,
+                                    Type = parts[2].Trim(),
+                                    Text = parts[3].Trim()
+                                });
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Invalid cost format in line: {line}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid line format: {line}");
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading file: {ex.Message}");
+        }
+    }
+
+
+    private void ShuffleDeck()
+    {
+        var random = new Random();
+        Deck = Deck.OrderBy(_ => random.Next()).ToList();
+    }
+
+    private void AddCard()
+    {
+        if (!string.IsNullOrWhiteSpace(NewCard?.Name))
+        {
+            Deck.Add(NewCard);
+            NewCard = new CardModel();
+        }
+    }
+
+    private void RemoveCard(CardModel card)
+    {
+        Deck.Remove(card);
+    }
+
+    private void DrawCard()
+    {
+        if (!Deck.Any())
+        {
+            ReshuffleDiscardPile();
+        }
+
+        if (Deck.Any())
+        {
+            var drawnCard = Deck.First();
+            Deck.Remove(drawnCard);
+            DiscardPile.Add(drawnCard);
+        }
+    }
+
+    private void DiscardCard()
+    {
+        if (CanDiscard)
+        {
+            DiscardPile.RemoveAt(DiscardPile.Count - 1);
+        }
+    }
+
+    private void ReshuffleDiscardPile()
+    {
+        Deck.AddRange(DiscardPile);
+        DiscardPile.Clear();
+        ShuffleDeck();
+    }
+}

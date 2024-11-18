@@ -1,0 +1,238 @@
+﻿@page "/"
+@using DeckBuilder.Models
+@using System.Text.Json
+@using DeckBuilder.Components.UI
+
+<h3>Deck Manager</h3>
+
+<!-- CSV Uploader -->
+<CardLoaderComponent OnDeckLoaded="HandleDeckLoaded" />
+
+
+<h1 class="d-flex align-items-center">
+    Player:
+    @if (Players.Any() && CurrentPlayer != null)
+    {
+        <span>@CurrentPlayer.Name</span>
+    }
+    else
+    {
+        <span>No Player Available</span>
+    }
+
+    <button class="btn btn-danger btn-sm ms-3" @onclick="EndTurn">End Turn</button>
+</h1>
+
+<VendingMachineComponent VendingPile="VendingPile"
+                         OnAcquireToDiscard="HandleAcquireToDiscard"
+                         OnReturnToVendingMachine="HandleReturnToVendingMachine" />
+
+
+<!-- Actions -->
+@if (Deck.Any() || DiscardPile.Any())
+{
+    <div class="mb-3">
+        <h5>Actions</h5>
+        <button class="btn btn-success" @onclick="DrawCard">Draw Card</button>
+        <button class="btn btn-success" @onclick="DrawFiveCards">Draw 5</button>
+        <button class="btn btn-danger" @onclick="DiscardAll">Discard All</button>
+    </div>
+    <DiceRollingComponent />
+}
+
+
+
+<!-- Board Component -->
+<BoardComponent Cards="PlayedCards" OnDiscard="HandleBoardDiscard" />
+
+<!-- Hand Component -->
+<PlayerHandComponent Cards="Hand" OnDiscard="HandleDiscard" OnPlay="HandlePlayCard"/>
+
+<div class="row">
+    <!-- Deck Component -->
+    <div class="col">
+        <DeckComponent Cards="Deck" OnShuffle="HandleShuffle" OnDraw="HandleDrawCard" />
+    </div>
+
+    <!-- Discard Pile -->
+    <div class="col">
+        <DiscardPileComponent Cards="DiscardPile" OnDraw="HandleDrawFromDiscard" />
+    </div>
+</div>
+
+
+
+@code {
+    private List<CardModel> Deck = new();
+    private List<CardModel> DiscardPile = new();
+    private List<CardModel> Hand = new();
+    private List<CardModel> PlayedCards = new();
+    private List<PlayerModel> Players { get; set; } = new();
+    private int CurrentPlayerIndex { get; set; } = 0;
+
+    private PlayerModel CurrentPlayer => Players.ElementAtOrDefault(CurrentPlayerIndex);
+
+    private void StartTurn()
+    {
+        // Load current player's data into the active lists
+        Deck = new List<CardModel>(CurrentPlayer.Deck);
+        DiscardPile = new List<CardModel>(CurrentPlayer.DiscardPile);
+        Hand = new List<CardModel>(CurrentPlayer.Hand);
+        PlayedCards = new List<CardModel>(CurrentPlayer.PlayedCards);
+    }
+
+    private void EndTurn()
+    {
+        // Move data from active lists back into the current player's model
+        DiscardAll();
+        CurrentPlayer.DiscardPile.Clear();
+        CurrentPlayer.DiscardPile.AddRange(DiscardPile);
+        CurrentPlayer.Deck.Clear();
+        CurrentPlayer.Deck.AddRange(Deck);
+        CurrentPlayer.Hand.Clear();
+        CurrentPlayer.Hand.AddRange(Hand);
+        CurrentPlayer.PlayedCards.Clear();
+        CurrentPlayer.PlayedCards.AddRange(PlayedCards);
+
+        // Switch to the next player
+        NextTurn();
+
+        // Load the next player's data
+        StartTurn();
+    }
+
+    private void NextTurn()
+    {
+        CurrentPlayerIndex = (CurrentPlayerIndex + 1) % Players.Count;
+    }
+
+    private void HandleDeckLoaded(List<CardModel> cards)
+    {
+        Console.WriteLine("Loading the cards");
+        var vendingCards = cards.Where(c => c.PlayerId == 0).ToList();
+        VendingPile.AddRange(vendingCards);
+
+        var playerCards = cards.Where(c => c.PlayerId != 0).ToList();
+        var playerIds = playerCards.Select(c => c.PlayerId).Distinct().ToList();
+
+        Players.Clear();
+        foreach (var id in playerIds)
+        {
+            Players.Add(new PlayerModel($"Player {id}"));
+            Console.WriteLine($"Adding a new Player with ID: {id.ToString()}");
+            Console.WriteLine($"Players now has: " + Players.Count.ToString() + "players");
+        }
+
+        foreach (var card in playerCards)
+        {
+            Console.WriteLine($"Checking card, it is for player: {card.PlayerId.ToString()}");
+            var player = Players.FirstOrDefault(p => p.Name == $"Player {card.PlayerId}");
+            Console.WriteLine($"Found a player to add to their deck, their name is: {player.Name}");
+            if (player != null)
+            {
+                player.Deck.Add(card);
+            }
+            else
+            {
+                Console.WriteLine($"Warning: No player found for card {card.Name} with PlayerId {card.PlayerId}");
+            }
+        }
+        StartTurn();
+    }
+
+    private void DrawCard()
+    {
+        if (!Deck.Any())
+        {
+            ReshuffleDiscardPile();
+        }
+
+        if (Deck.Any())
+        {
+            var drawnCard = Deck.First();
+            Deck.Remove(drawnCard);
+            Hand.Add(drawnCard);
+        }
+    }
+
+    private void HandleDiscard(CardModel card)
+    {
+        Hand.Remove(card);
+        DiscardPile.Add(card);
+    }
+
+    private void HandleShuffle()
+    {
+        var random = new Random();
+        Deck = Deck.OrderBy(_ => random.Next()).ToList();
+    }
+
+    private void ReshuffleDiscardPile()
+    {
+        Deck.AddRange(DiscardPile);
+        DiscardPile.Clear();
+        HandleShuffle();
+    }
+
+    private void HandlePlayCard(CardModel card)
+    {
+        Hand.Remove(card);
+        PlayedCards.Add(card);
+    }
+
+    private void DrawFiveCards()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!Deck.Any())
+            {
+                ReshuffleDiscardPile();
+            }
+
+            if (Deck.Any())
+            {
+                var drawnCard = Deck.First();
+                Deck.Remove(drawnCard);
+                Hand.Add(drawnCard);
+            }
+        }
+    }
+    private void DiscardAll()
+    {
+        DiscardPile.AddRange(Hand);
+        Hand.Clear();
+    }
+
+    private void HandleDrawCard(CardModel card)
+    {
+        Deck.Remove(card); // Remove the drawn card from the deck
+        Hand.Add(card); // Add the card to the player's hand
+    }
+    private void HandleDrawFromDiscard(CardModel card)
+    {
+        DiscardPile.Remove(card); // Remove the card from the discard pile
+        Hand.Add(card); // Add the card to the player's hand
+    }
+    private void HandleBoardDiscard(CardModel card)
+    {
+        PlayedCards.Remove(card); // Remove the card from the board
+        DiscardPile.Add(card); // Add the card to the discard pile
+    }
+      private List<CardModel> VendingPile { get; set; } = new();
+
+    private void HandleAcquireToDiscard(CardModel card)
+    {
+        if (CurrentPlayer != null)
+        {
+            DiscardPile.Add(card);
+        }
+    }
+
+    private void HandleReturnToVendingMachine(CardModel card)
+    {
+        if (card != null)
+        {
+            VendingPile.Add(card); // Move card to the bottom of the vending machine pile
+        }
+    }
+}

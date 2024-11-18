@@ -1,0 +1,63 @@
+﻿@using DeckBuilder.Models
+
+<div>
+    <h5>Board</h5>
+    @if (Cards.Any())
+    {
+        <div class="row">
+            @foreach (var card in Cards)
+            {
+                <div class="col card-container mb-3">
+                    <div class="card shadow-lg" style="background-color: #f6f0ea; border: 1px solid #e2d7cd; border-radius: 8px;">
+                        <div class="card-body position-relative">
+                            <h5 class="card-title d-flex justify-content-between">
+                                @card.Name
+                                <span class="badge rounded-circle" style="background-color: #a89485; color: white; padding: 0.4em 0.6em;">
+                                    @card.Cost
+                                </span>
+                            </h5>
+                            <p class="card-text fst-italic text-muted">@card.Type</p>
+                            <p class="card-text">@card.Text</p>
+                            <div class="mt-3">
+                                <button class="btn btn-warning btn-sm" @onclick="() => DiscardCard(card)">Discard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No cards on the board.</p>
+    }
+</div>
+
+<style>
+    .card-container {
+        flex: 0 0 calc(20% - 1rem); /* 5 cards per row with spacing */
+        max-width: calc(20% - 1rem);
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .row {
+        justify-content: center; /* Center the cards if fewer than 5 */
+    }
+</style>
+
+@code {
+    [Parameter]
+    public List<CardModel> Cards { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<CardModel> OnDiscard { get; set; }
+
+    private async Task DiscardCard(CardModel card)
+    {
+        if (OnDiscard.HasDelegate)
+        {
+            await OnDiscard.InvokeAsync(card);
+        }
+    }
+}

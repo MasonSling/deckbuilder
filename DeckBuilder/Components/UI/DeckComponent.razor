@@ -1,0 +1,85 @@
+﻿@using DeckBuilder.Models
+<div>
+    <h5>Deck</h5>
+    @if (Cards.Any())
+    {
+        <div class="mb-3">
+            <p>Cards Remaining: @Cards.Count</p>
+            <button class="btn btn-primary me-2" @onclick="ShuffleDeck">Shuffle Deck</button>
+            <button class="btn btn-secondary" @onclick="ToggleDeckView">@(IsDeckVisible ? "Hide Deck" : "View Deck")</button>
+        </div>
+
+        @if (IsDeckVisible)
+        {
+            <ul class="list-group">
+                @foreach (var card in Cards)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>@card.Name</strong> - Cost: @card.Cost, Type: @card.Type, Text: @card.Text
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm" @onclick="() => DrawCard(card)">Draw</button>
+                            <button class="btn btn-success btn-sm" @onclick="() => MoveToBottom(card)">Bottom</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteCard(card)">Delete</button>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+    }
+    else
+    {
+        <p>No cards in the deck.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<CardModel> Cards { get; set; } = new();
+
+    [Parameter]
+    public EventCallback OnShuffle { get; set; }
+
+    [Parameter]
+    public EventCallback<CardModel> OnDraw { get; set; }
+
+    private bool IsDeckVisible { get; set; } = false;
+
+    private async Task ShuffleDeck()
+    {
+        if (OnShuffle.HasDelegate)
+        {
+            await OnShuffle.InvokeAsync();
+        }
+    }
+
+    private async Task DrawCard(CardModel card)
+    {
+        if (OnDraw.HasDelegate)
+        {
+            await OnDraw.InvokeAsync(card);
+        }
+    }
+
+    private void MoveToBottom(CardModel card)
+    {
+        if (Cards.Contains(card))
+        {
+            Cards.Remove(card); // Remove the card from its current position
+            Cards.Add(card);    // Add it to the bottom of the deck
+        }
+    }
+
+    private void ToggleDeckView()
+    {
+        IsDeckVisible = !IsDeckVisible;
+    }
+    private void DeleteCard(CardModel card)
+    {
+        if (Cards.Contains(card))
+        {
+            Cards.Remove(card); // Remove the card from the list
+        }
+    }
+}

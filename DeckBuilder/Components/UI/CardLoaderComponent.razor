@@ -1,0 +1,65 @@
+﻿@using DeckBuilder.Models
+<div>
+    @if (!DeckLoaded)
+    {
+        <div>
+            <h5>Upload CSV</h5>
+            <InputFile OnChange="HandleFileUpload" accept=".csv" />
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback<List<CardModel>> OnDeckLoaded { get; set; }
+
+    private bool DeckLoaded { get; set; } = false;
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        var cards = new List<CardModel>();
+        try
+        {
+            var file = e.File;
+
+            using var stream = file.OpenReadStream(maxAllowedSize: 1024 * 1024); // 1 MB limit
+            using var reader = new StreamReader(stream);
+
+            while (true)
+            {
+                var line = await reader.ReadLineAsync();
+                if (line == null)
+                    break;
+
+                if (!string.IsNullOrWhiteSpace(line))
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length == 5 && // Updated to 5 columns: Name, Cost, Type, Text, PlayerId
+                        int.TryParse(parts[1], out int cost) &&
+                        int.TryParse(parts[4], out int playerId)) // Parse PlayerId
+                    {
+                        cards.Add(new CardModel
+                            {
+                                Name = parts[0].Trim(),
+                                Cost = cost,
+                                Type = parts[2].Trim(),
+                                Text = parts[3].Trim(),
+                                PlayerId = playerId // Assign PlayerId
+                            });
+                    }
+                }
+            }
+
+            DeckLoaded = true;
+
+            if (OnDeckLoaded.HasDelegate)
+            {
+                await OnDeckLoaded.InvokeAsync(cards);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading file: {ex.Message}");
+        }
+    }
+}

@@ -1,0 +1,69 @@
+﻿@using System
+
+<div>
+
+    <div class="mb-3 d-flex align-items-center gap-2">
+        <label for="diceCount" class="form-label mb-0">Number of Dice:</label>
+        <input type="number" id="diceCount" class="form-control" style="width: 3rem;" min="1" @bind="DiceCount" />
+        <button class="btn btn-primary" @onclick="RollDice">Roll</button>
+    </div>
+
+
+
+
+    @if (RollResults.Any())
+    {
+        <div class="d-flex flex-wrap">
+            @foreach (var roll in RollResults)
+            {
+                <div class="dice-icon me-2 text-center">
+                    <i class="fas fa-dice-@GetDiceIcon(roll)" style="font-size: 2rem;"></i>
+                    <div>@roll</div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No dice rolled yet.</p>
+    }
+</div>
+
+<style>
+    .dice-icon {
+        width: 50px;
+        text-align: center;
+    }
+
+        .dice-icon i {
+            color: #4a90e2; /* Blue tone for dice icons */
+        }
+</style>
+
+@code {
+    private int DiceCount { get; set; } = 1; // Default to 1 die
+    private List<int> RollResults { get; set; } = new();
+
+    private void RollDice()
+    {
+        if (DiceCount < 1)
+            return;
+
+        var random = new Random();
+        RollResults = Enumerable.Range(0, DiceCount).Select(_ => random.Next(1, 7)).ToList();
+    }
+
+    private string GetDiceIcon(int roll)
+    {
+        return roll switch
+        {
+            1 => "one",
+            2 => "two",
+            3 => "three",
+            4 => "four",
+            5 => "five",
+            6 => "six",
+            _ => "question"
+        };
+    }
+}

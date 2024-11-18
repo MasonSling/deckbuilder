@@ -1,0 +1,75 @@
+﻿@using DeckBuilder.Models
+<div>
+    <h5>Vending Machine</h5>
+
+    <button class="btn btn-primary mb-3" @onclick="ViewPrize">View Prize</button>
+
+    @if (Prizes.Any())
+    {
+        <ul class="list-group">
+            @foreach (var card in Prizes)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>@card.Name</strong> - Cost: @card.Cost, Type: @card.Type, Text: @card.Text
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-warning btn-sm" @onclick="() => AddToDiscard(card)">To Discard</button>
+                        <button class="btn btn-secondary btn-sm" @onclick="() => ReturnToVendingMachine(card)">Return to Machine</button>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No prizes revealed yet. Click "View Prize" to reveal a card.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<CardModel> VendingPile { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<CardModel> OnAcquireToDiscard { get; set; }
+
+    [Parameter]
+    public EventCallback<CardModel> OnReturnToVendingMachine { get; set; }
+
+    private List<CardModel> Prizes { get; set; } = new();
+
+    private void ViewPrize()
+    {
+        if (VendingPile.Any())
+        {
+            var topCard = VendingPile.First();
+            VendingPile.Remove(topCard);
+            Prizes.Add(topCard);
+        }
+    }
+
+    private async Task AddToDiscard(CardModel card)
+    {
+        if (Prizes.Contains(card))
+        {
+            Prizes.Remove(card);
+            if (OnAcquireToDiscard.HasDelegate)
+            {
+                await OnAcquireToDiscard.InvokeAsync(card);
+            }
+        }
+    }
+
+    private async Task ReturnToVendingMachine(CardModel card)
+    {
+        if (Prizes.Contains(card))
+        {
+            Prizes.Remove(card);
+            if (OnReturnToVendingMachine.HasDelegate)
+            {
+                await OnReturnToVendingMachine.InvokeAsync(card);
+            }
+        }
+    }
+}
