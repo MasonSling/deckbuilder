@@ -1,0 +1,47 @@
+﻿@using DeckBuilder.Models
+<div class="card p-3">
+    <button @onclick="ViewPlayers">View All Players</button>
+    @if (Players.Any() && ShowTable)
+    {
+        <h5 class="mb-3">Player Stats Overview</h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Health</th>
+                    <th>ABV</th>
+                    <th>Hype</th>
+                    <th>Conditions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var player in Players)
+                {
+                    <tr>
+                        <td>@player.Name</td>
+                        <td>@player.Stats.Health</td>
+                        <td>@player.Stats.ABV</td>
+                        <td>@player.Stats.Hype</td>
+                        <td>
+                            @if (player.Stats.Headache) {<span class="badge bg-danger text-dark">Headache</span>}
+                            @if (player.Stats.Anxiety) {<span class="badge bg-danger text-dark">Anxiety</span>}
+                            @if (player.Stats.Sickened) {<span class="badge bg-danger text-white">Sickened</span>}
+                            @if (player.Stats.Cursed) {<span class="badge bg-danger text-white">Cursed</span>}
+                            @if (player.Stats.Blessed) {<span class="badge bg-success text-white">Blessed</span>}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<PlayerModel> Players { get; set; } = new();
+    private bool ShowTable = false;
+    private void ViewPlayers()
+    {
+        ShowTable = !ShowTable;
+    }
+}

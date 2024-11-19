@@ -7,9 +7,9 @@
 <CardLoaderComponent OnDeckLoaded="HandleDeckLoaded" />
 
 @if(CardsLoaded){
-    <h2 class="d-flex align-items-center">
+    <h3 class="d-flex align-items-center">
         <span>@CurrentPlayer.Name</span>
-    </h2>
+    </h3>
     <!-- Actions -->
     @if (Deck.Any() || DiscardPile.Any())
     {
@@ -45,9 +45,15 @@
                              OnReturnToVendingMachine="HandleReturnToVendingMachine" />
 
 
-    <div class="col-6">
-        <PlayerStatsComponent Stats="CurrentPlayer.Stats" />
+    <div class="row">
+        <div class="col-6">
+            <PlayerStatsComponent Stats="CurrentPlayer.Stats" />
+        </div>
+        <div class="col-6">
+            <PlayerTableComponent Players="Players" />
+        </div>
     </div>
+
 }
 
 @code {
