@@ -1,0 +1,78 @@
+﻿@using DeckBuilder.Models
+
+<div class="card p-3">
+    <h5>Player Stats</h5>
+    <div class="row">
+        <!-- Health Stat -->
+        <div class="col d-flex align-items-center">
+            <span><strong>Health:</strong> @Stats.Health</span>
+            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.Health), 1)">
+                <i class="bi bi-arrow-up"></i>
+            </button>
+            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.Health), -1)">
+                <i class="bi bi-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- ABV Stat -->
+        <div class="col d-flex align-items-center">
+            <span><strong>ABV:</strong> @Stats.ABV</span>
+            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.ABV), 1)">
+                <i class="bi bi-arrow-up"></i>
+            </button>
+            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.ABV), -1)">
+                <i class="bi bi-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- Hype Stat -->
+        <div class="col d-flex align-items-center">
+            <span><strong>Hype:</strong> @Stats.Hype</span>
+            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.Hype), 1)">
+                <i class="bi bi-arrow-up"></i>
+            </button>
+            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.Hype), -1)">
+                <i class="bi bi-arrow-down"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Conditions Section -->
+    <div class="row mt-3">
+        <div class="col">
+            <div class="d-flex justify-content-between flex-wrap">
+                <label>
+                    <input type="checkbox" @bind="Stats.Headache" /> Headache
+                </label>
+                <label>
+                    <input type="checkbox" @bind="Stats.Anxiety" /> Anxiety
+                </label>
+                <label>
+                    <input type="checkbox" @bind="Stats.Sickened" /> Sickened
+                </label>
+                <label>
+                    <input type="checkbox" @bind="Stats.Cursed" /> Cursed
+                </label>
+                <label>
+                    <input type="checkbox" @bind="Stats.Blessed" /> Blessed
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public StatsModel Stats { get; set; } = new();
+
+    private void AdjustStat(string statName, int value)
+    {
+        // Use reflection to adjust the stat dynamically
+        var property = typeof(StatsModel).GetProperty(statName);
+        if (property != null)
+        {
+            int currentValue = (int)property.GetValue(Stats);
+            property.SetValue(Stats, currentValue + value);
+        }
+    }
+}

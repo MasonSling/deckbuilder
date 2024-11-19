@@ -34,18 +34,22 @@
                 if (!string.IsNullOrWhiteSpace(line))
                 {
                     var parts = line.Split(',');
-                    if (parts.Length == 5 && // Updated to 5 columns: Name, Cost, Type, Text, PlayerId
+                    if (parts.Length == 6 && // Updated to 6 columns: Name, Cost, Type, Text, PlayerId, Copies
                         int.TryParse(parts[1], out int cost) &&
-                        int.TryParse(parts[4], out int playerId)) // Parse PlayerId
+                        int.TryParse(parts[4], out int playerId) &&
+                        int.TryParse(parts[5], out int copies)) // Parse Copies
                     {
-                        cards.Add(new CardModel
-                            {
-                                Name = parts[0].Trim(),
-                                Cost = cost,
-                                Type = parts[2].Trim(),
-                                Text = parts[3].Trim(),
-                                PlayerId = playerId // Assign PlayerId
-                            });
+                        for (int i = 0; i < copies; i++)
+                        {
+                            cards.Add(new CardModel
+                                {
+                                    Name = parts[0].Trim(),
+                                    Cost = cost,
+                                    Type = parts[2].Trim(),
+                                    Text = parts[3].Trim(),
+                                    PlayerId = playerId // Assign PlayerId
+                                });
+                        }
                     }
                 }
             }
@@ -63,3 +67,4 @@
         }
     }
 }
+

@@ -3,64 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\deckcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\deckcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\playerstatscomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\playerstatscomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\pages\\game.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\pages\\game.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\cardloadercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\cardloadercomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\vendingmachinecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\vendingmachinecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\boardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\boardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\playerhandcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\playerhandcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\models\\playermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\models\\playermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\models\\cardmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\models\\cardmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\dicerollingcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\dicerollingcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\ui\\discardpilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\ui\\discardpilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|c:\\users\\mason\\source\\repos\\deckbuilder\\deckbuilder\\models\\statsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE61D1A3-9399-4A4F-AF1F-0CF4251C02E3}|DeckBuilder\\DeckBuilder.csproj|solutionrelative:deckbuilder\\models\\statsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,201 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-18T00:03:14.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CardLoaderComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\CardLoaderComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\CardLoaderComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\CardLoaderComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\CardLoaderComponent.razor",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:53:08.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DiceRollingComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DiceRollingComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\DiceRollingComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DiceRollingComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\DiceRollingComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T21:35:55.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PlayerModel.cs",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\PlayerModel.cs",
-              "RelativeDocumentMoniker": "DeckBuilder\\Models\\PlayerModel.cs",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\PlayerModel.cs",
-              "RelativeToolTip": "DeckBuilder\\Models\\PlayerModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T22:06:36.111Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DeckComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DeckComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\DeckComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DeckComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\DeckComponent.razor",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAEsAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:50:15.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Game.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Game.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\Pages\\Game.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Game.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\Pages\\Game.razor",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAIsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:51:19.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BoardComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\BoardComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\BoardComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\BoardComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\BoardComponent.razor",
-              "ViewState": "AgIAACQAAAAAAAAAAAA2wDUAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:58:39.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Counter.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Counter.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\Pages\\Counter.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Counter.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\Pages\\Counter.razor",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAgwHMAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:29:33.026Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CardModel.cs",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\CardModel.cs",
-              "RelativeDocumentMoniker": "DeckBuilder\\Models\\CardModel.cs",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\CardModel.cs",
-              "RelativeToolTip": "DeckBuilder\\Models\\CardModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T20:30:21.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VendingMachineComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\VendingMachineComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\VendingMachineComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\VendingMachineComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\VendingMachineComponent.razor",
-              "ViewState": "AgIAADIAAAAAAAAAAAAmwDsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T22:27:04.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerHandComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\PlayerHandComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\PlayerHandComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\PlayerHandComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\PlayerHandComponent.razor",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAzwBgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:49:23.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DiscardPileComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DiscardPileComponent.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\DiscardPileComponent.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\DiscardPileComponent.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\UI\\DiscardPileComponent.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T21:29:07.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "App.razor",
               "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\App.razor",
               "RelativeDocumentMoniker": "DeckBuilder\\Components\\App.razor",
               "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\App.razor",
               "RelativeToolTip": "DeckBuilder\\Components\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T21:36:35.39Z",
+              "WhenOpened": "2024-11-19T16:13:00.05Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "DeckBuilder\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "DeckBuilder\\Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "BoardComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\BoardComponent.razor",
+              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\BoardComponent.razor",
+              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\BoardComponent.razor",
+              "RelativeToolTip": "DeckBuilder\\Components\\UI\\BoardComponent.razor",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAADUAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-17T20:54:07.949Z",
+              "WhenOpened": "2024-11-19T16:06:12.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Program.cs",
-              "RelativeDocumentMoniker": "DeckBuilder\\Program.cs",
-              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Program.cs",
-              "RelativeToolTip": "DeckBuilder\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABBAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "PlayerStatsComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\PlayerStatsComponent.razor",
+              "RelativeDocumentMoniker": "DeckBuilder\\Components\\UI\\PlayerStatsComponent.razor",
+              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\UI\\PlayerStatsComponent.razor",
+              "RelativeToolTip": "DeckBuilder\\Components\\UI\\PlayerStatsComponent.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBQAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-19T15:54:00.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StatsModel.cs",
+              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\StatsModel.cs",
+              "RelativeDocumentMoniker": "DeckBuilder\\Models\\StatsModel.cs",
+              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Models\\StatsModel.cs",
+              "RelativeToolTip": "DeckBuilder\\Models\\StatsModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T20:37:26.389Z",
+              "WhenOpened": "2024-11-19T15:51:18.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.razor",
+              "DocumentMoniker": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Game.razor",
+              "RelativeDocumentMoniker": "DeckBuilder\\Components\\Pages\\Game.razor",
+              "ToolTip": "C:\\Users\\Mason\\source\\repos\\DeckBuilder\\DeckBuilder\\Components\\Pages\\Game.razor",
+              "RelativeToolTip": "DeckBuilder\\Components\\Pages\\Game.razor",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAC8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-17T20:51:19.224Z",
               "EditorCaption": ""
             }
           ]

@@ -3,64 +3,52 @@
 @using System.Text.Json
 @using DeckBuilder.Components.UI
 
-<h3>Deck Manager</h3>
-
 <!-- CSV Uploader -->
 <CardLoaderComponent OnDeckLoaded="HandleDeckLoaded" />
 
-
-<h1 class="d-flex align-items-center">
-    Player:
-    @if (Players.Any() && CurrentPlayer != null)
-    {
+@if(CardsLoaded){
+    <h2 class="d-flex align-items-center">
         <span>@CurrentPlayer.Name</span>
-    }
-    else
+    </h2>
+    <!-- Actions -->
+    @if (Deck.Any() || DiscardPile.Any())
     {
-        <span>No Player Available</span>
+        <div class="mb-3">
+            <h5>Actions</h5>
+            <button class="btn btn-success btn-sm" @onclick="DrawCard">Draw Card</button>
+            <button class="btn btn-success btn-sm" @onclick="DrawFiveCards">Draw 5</button>
+            <button class="btn btn-danger btn-sm" @onclick="DiscardAll">Discard All</button>
+            <button class="btn btn-danger btn-sm" @onclick="EndTurn">End Turn</button>
+        </div>
+        <DiceRollingComponent />
     }
+    <!-- Board Component -->
+    <BoardComponent Cards="PlayedCards" OnDiscard="HandleBoardDiscard" />
 
-    <button class="btn btn-danger btn-sm ms-3" @onclick="EndTurn">End Turn</button>
-</h1>
+    <!-- Hand Component -->
+    <PlayerHandComponent Cards="Hand" OnDiscard="HandleDiscard" OnPlay="HandlePlayCard"/>
 
-<VendingMachineComponent VendingPile="VendingPile"
-                         OnAcquireToDiscard="HandleAcquireToDiscard"
-                         OnReturnToVendingMachine="HandleReturnToVendingMachine" />
+    <div class="row">
+        <!-- Deck Component -->
+        <div class="col">
+            <DeckComponent Cards="Deck" OnShuffle="HandleShuffle" OnDraw="HandleDrawCard" />
+        </div>
 
-
-<!-- Actions -->
-@if (Deck.Any() || DiscardPile.Any())
-{
-    <div class="mb-3">
-        <h5>Actions</h5>
-        <button class="btn btn-success" @onclick="DrawCard">Draw Card</button>
-        <button class="btn btn-success" @onclick="DrawFiveCards">Draw 5</button>
-        <button class="btn btn-danger" @onclick="DiscardAll">Discard All</button>
+        <!-- Discard Pile -->
+        <div class="col">
+            <DiscardPileComponent Cards="DiscardPile" OnDraw="HandleDrawFromDiscard" />
+        </div>
     </div>
-    <DiceRollingComponent />
+
+    <VendingMachineComponent VendingPile="VendingPile"
+                             OnAcquireToDiscard="HandleAcquireToDiscard"
+                             OnReturnToVendingMachine="HandleReturnToVendingMachine" />
+
+
+    <div class="col-6">
+        <PlayerStatsComponent Stats="CurrentPlayer.Stats" />
+    </div>
 }
-
-
-
-<!-- Board Component -->
-<BoardComponent Cards="PlayedCards" OnDiscard="HandleBoardDiscard" />
-
-<!-- Hand Component -->
-<PlayerHandComponent Cards="Hand" OnDiscard="HandleDiscard" OnPlay="HandlePlayCard"/>
-
-<div class="row">
-    <!-- Deck Component -->
-    <div class="col">
-        <DeckComponent Cards="Deck" OnShuffle="HandleShuffle" OnDraw="HandleDrawCard" />
-    </div>
-
-    <!-- Discard Pile -->
-    <div class="col">
-        <DiscardPileComponent Cards="DiscardPile" OnDraw="HandleDrawFromDiscard" />
-    </div>
-</div>
-
-
 
 @code {
     private List<CardModel> Deck = new();
@@ -69,9 +57,8 @@
     private List<CardModel> PlayedCards = new();
     private List<PlayerModel> Players { get; set; } = new();
     private int CurrentPlayerIndex { get; set; } = 0;
-
     private PlayerModel CurrentPlayer => Players.ElementAtOrDefault(CurrentPlayerIndex);
-
+    private bool CardsLoaded = false;
     private void StartTurn()
     {
         // Load current player's data into the active lists
@@ -108,11 +95,13 @@
 
     private void HandleDeckLoaded(List<CardModel> cards)
     {
+        var random = new Random();
         Console.WriteLine("Loading the cards");
         var vendingCards = cards.Where(c => c.PlayerId == 0).ToList();
-        VendingPile.AddRange(vendingCards);
+        VendingPile = vendingCards.OrderBy(_ => random.Next()).ToList();
 
         var playerCards = cards.Where(c => c.PlayerId != 0).ToList();
+
         var playerIds = playerCards.Select(c => c.PlayerId).Distinct().ToList();
 
         Players.Clear();
@@ -120,14 +109,11 @@
         {
             Players.Add(new PlayerModel($"Player {id}"));
             Console.WriteLine($"Adding a new Player with ID: {id.ToString()}");
-            Console.WriteLine($"Players now has: " + Players.Count.ToString() + "players");
         }
 
         foreach (var card in playerCards)
         {
-            Console.WriteLine($"Checking card, it is for player: {card.PlayerId.ToString()}");
             var player = Players.FirstOrDefault(p => p.Name == $"Player {card.PlayerId}");
-            Console.WriteLine($"Found a player to add to their deck, their name is: {player.Name}");
             if (player != null)
             {
                 player.Deck.Add(card);
@@ -137,6 +123,11 @@
                 Console.WriteLine($"Warning: No player found for card {card.Name} with PlayerId {card.PlayerId}");
             }
         }
+        foreach (var player in Players)
+        {
+            player.Deck = player.Deck.OrderBy(_ => random.Next()).ToList(); // Shuffle player decks
+        }
+        CardsLoaded = true;
         StartTurn();
     }
 
@@ -235,4 +226,5 @@
             VendingPile.Add(card); // Move card to the bottom of the vending machine pile
         }
     }
+
 }

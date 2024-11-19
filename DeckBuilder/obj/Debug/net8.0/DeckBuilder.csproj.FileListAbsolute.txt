@@ -26,3 +26,4 @@ C:\Users\Mason\source\repos\DeckBuilder\DeckBuilder\obj\Debug\net8.0\refint\Deck
 C:\Users\Mason\source\repos\DeckBuilder\DeckBuilder\obj\Debug\net8.0\DeckBuilder.pdb
 C:\Users\Mason\source\repos\DeckBuilder\DeckBuilder\obj\Debug\net8.0\DeckBuilder.genruntimeconfig.cache
 C:\Users\Mason\source\repos\DeckBuilder\DeckBuilder\obj\Debug\net8.0\ref\DeckBuilder.dll
+C:\Users\Mason\source\repos\DeckBuilder\DeckBuilder\obj\Debug\net8.0\DeckBuilder.sourcelink.json
