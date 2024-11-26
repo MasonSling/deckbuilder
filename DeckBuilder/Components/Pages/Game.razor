@@ -4,6 +4,7 @@
 @using DeckBuilder.Components.UI
 
 <!-- CSV Uploader -->
+<EnemyDeckComponent />
 <CardLoaderComponent OnDeckLoaded="HandleDeckLoaded" />
 
 @if(CardsLoaded){
@@ -18,6 +19,7 @@
             <button class="btn btn-success btn-sm" @onclick="DrawCard">Draw Card</button>
             <button class="btn btn-success btn-sm" @onclick="DrawFiveCards">Draw 5</button>
             <button class="btn btn-danger btn-sm" @onclick="DiscardAll">Discard All</button>
+            <button class="btn btn-danger btn-sm" @onclick="ClearABV">Clear ABV</button>
             <button class="btn btn-danger btn-sm" @onclick="EndTurn">End Turn</button>
         </div>
         <DiceRollingComponent />
@@ -27,6 +29,16 @@
 
     <!-- Hand Component -->
     <PlayerHandComponent Cards="Hand" OnDiscard="HandleDiscard" OnPlay="HandlePlayCard"/>
+
+    <div class="row">
+@*         <div class="col-6">
+            <PlayerStatsComponent Stats="CurrentPlayer.Stats" />
+        </div> *@
+        <div class="col-9">
+            <PlayerTableComponent Players="Players" CurrentPlayer="CurrentPlayer" />
+        </div>
+    </div>
+
 
     <div class="row">
         <!-- Deck Component -->
@@ -40,19 +52,13 @@
         </div>
     </div>
 
+
     <VendingMachineComponent VendingPile="VendingPile"
                              OnAcquireToDiscard="HandleAcquireToDiscard"
                              OnReturnToVendingMachine="HandleReturnToVendingMachine" />
 
 
-    <div class="row">
-        <div class="col-6">
-            <PlayerStatsComponent Stats="CurrentPlayer.Stats" />
-        </div>
-        <div class="col-6">
-            <PlayerTableComponent Players="Players" />
-        </div>
-    </div>
+
 
 }
 
@@ -175,6 +181,14 @@
     {
         Hand.Remove(card);
         PlayedCards.Add(card);
+    }
+
+    private void ClearABV()
+    {
+        foreach (PlayerModel player in Players)
+        {
+            player.Stats.ABV = 0;
+        }
     }
 
     private void DrawFiveCards()

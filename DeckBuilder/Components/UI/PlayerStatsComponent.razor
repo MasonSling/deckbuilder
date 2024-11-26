@@ -6,10 +6,10 @@
         <!-- Health Stat -->
         <div class="col d-flex align-items-center">
             <span><strong>Health:</strong> @Stats.Health</span>
-            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.Health), 1)">
+            <button class="btn btn-success ms-2" @onclick="() => AdjustStat(nameof(Stats.Health), 1)">
                 <i class="bi bi-arrow-up"></i>
             </button>
-            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.Health), -1)">
+            <button class="btn btn-outline-secondary ms-1" @onclick="() => AdjustStat(nameof(Stats.Health), -1)">
                 <i class="bi bi-arrow-down"></i>
             </button>
         </div>
@@ -17,10 +17,10 @@
         <!-- ABV Stat -->
         <div class="col d-flex align-items-center">
             <span><strong>ABV:</strong> @Stats.ABV</span>
-            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.ABV), 1)">
+            <button class="btn btn-success ms-2" @onclick="() => AdjustStat(nameof(Stats.ABV), 1)">
                 <i class="bi bi-arrow-up"></i>
             </button>
-            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.ABV), -1)">
+            <button class="btn btn-outline-secondary ms-1" @onclick="() => AdjustStat(nameof(Stats.ABV), -1)">
                 <i class="bi bi-arrow-down"></i>
             </button>
         </div>
@@ -28,10 +28,10 @@
         <!-- Hype Stat -->
         <div class="col d-flex align-items-center">
             <span><strong>Hype:</strong> @Stats.Hype</span>
-            <button class="btn btn-success btn-sm ms-2" @onclick="() => AdjustStat(nameof(Stats.Hype), 1)">
+            <button class="btn btn-success ms-2" @onclick="() => AdjustStat(nameof(Stats.Hype), 1)">
                 <i class="bi bi-arrow-up"></i>
             </button>
-            <button class="btn btn-outline-secondary btn-sm ms-1" @onclick="() => AdjustStat(nameof(Stats.Hype), -1)">
+            <button class="btn btn-outline-secondary ms-1" @onclick="() => AdjustStat(nameof(Stats.Hype), -1)">
                 <i class="bi bi-arrow-down"></i>
             </button>
         </div>
@@ -49,9 +49,6 @@
                 </label>
                 <label>
                     <input type="checkbox" @bind="Stats.Sickened" /> Sickened
-                </label>
-                <label>
-                    <input type="checkbox" @bind="Stats.Cursed" /> Cursed
                 </label>
                 <label>
                     <input type="checkbox" @bind="Stats.Blessed" /> Blessed

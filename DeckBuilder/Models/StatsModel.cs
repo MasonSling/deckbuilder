@@ -8,7 +8,6 @@
         public bool Headache { get; set; } = false;
         public bool Sickened { get; set; } = false;
         public bool Anxiety { get; set; } = false;
-        public bool Cursed { get; set; } = false;
         public bool Blessed { get; set; } = false;
     }
 }

@@ -1,7 +1,6 @@
 ﻿@using DeckBuilder.Models
 <div class="card p-3">
-    <button @onclick="ViewPlayers">View All Players</button>
-    @if (Players.Any() && ShowTable)
+    @if (Players.Any())
     {
         <h5 class="mb-3">Player Stats Overview</h5>
         <table class="table table-bordered table-striped">
@@ -17,17 +16,66 @@
             <tbody>
                 @foreach (var player in Players)
                 {
-                    <tr>
+                    <tr class="@(player.Name == CurrentPlayer?.Name ? "table-primary" : "")">
                         <td>@player.Name</td>
-                        <td>@player.Stats.Health</td>
-                        <td>@player.Stats.ABV</td>
-                        <td>@player.Stats.Hype</td>
                         <td>
-                            @if (player.Stats.Headache) {<span class="badge bg-danger text-dark">Headache</span>}
-                            @if (player.Stats.Anxiety) {<span class="badge bg-danger text-dark">Anxiety</span>}
-                            @if (player.Stats.Sickened) {<span class="badge bg-danger text-white">Sickened</span>}
-                            @if (player.Stats.Cursed) {<span class="badge bg-danger text-white">Cursed</span>}
-                            @if (player.Stats.Blessed) {<span class="badge bg-success text-white">Blessed</span>}
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-secondary btn-sm me-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.Health), -1)">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <span>@player.Stats.Health</span>
+                                <button class="btn btn-outline-secondary btn-sm ms-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.Health), 1)">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-secondary btn-sm me-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.ABV), -1)">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <span>@player.Stats.ABV</span>
+                                <button class="btn btn-outline-secondary btn-sm ms-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.ABV), 1)">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-secondary btn-sm me-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.Hype), -1)">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <span>@player.Stats.Hype</span>
+                                <button class="btn btn-outline-secondary btn-sm ms-1"
+                                        @onclick="() => AdjustStat(player, nameof(player.Stats.Hype), 1)">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge @GetConditionClass(player.Stats.Headache)"
+                                      @onclick="() => ToggleCondition(player, nameof(player.Stats.Headache))">
+                                    Headache
+                                </span>
+                                <span class="badge @GetConditionClass(player.Stats.Anxiety)"
+                                      @onclick="() => ToggleCondition(player, nameof(player.Stats.Anxiety))">
+                                    Anxiety
+                                </span>
+                                <span class="badge @GetConditionClass(player.Stats.Sickened)"
+                                      @onclick="() => ToggleCondition(player, nameof(player.Stats.Sickened))">
+                                    Sickened
+                                </span>
+                                <span class="badge @GetConditionClass(player.Stats.Blessed)"
+                                      @onclick="() => ToggleCondition(player, nameof(player.Stats.Blessed))">
+                                    Blessed
+                                </span>
+                            </div>
                         </td>
                     </tr>
                 }
@@ -39,9 +87,31 @@
 @code {
     [Parameter]
     public List<PlayerModel> Players { get; set; } = new();
-    private bool ShowTable = false;
-    private void ViewPlayers()
+    [Parameter]
+    public PlayerModel? CurrentPlayer { get; set; } // Active player
+
+    private void AdjustStat(PlayerModel player, string statName, int delta)
     {
-        ShowTable = !ShowTable;
+        var property = typeof(StatsModel).GetProperty(statName);
+        if (property != null)
+        {
+            int currentValue = (int)property.GetValue(player.Stats);
+            property.SetValue(player.Stats, currentValue + delta);
+        }
+    }
+
+    private void ToggleCondition(PlayerModel player, string condition)
+    {
+        var property = typeof(StatsModel).GetProperty(condition);
+        if (property != null)
+        {
+            var currentValue = (bool)property.GetValue(player.Stats);
+            property.SetValue(player.Stats, !currentValue);
+        }
+    }
+
+    private string GetConditionClass(bool isActive)
+    {
+        return isActive ? "bg-success text-white" : "text-muted";
     }
 }

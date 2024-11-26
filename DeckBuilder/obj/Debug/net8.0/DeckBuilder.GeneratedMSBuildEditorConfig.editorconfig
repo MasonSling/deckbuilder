@@ -66,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxEaXNjYXJkUGlsZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Mason/source/repos/DeckBuilder/DeckBuilder/Components/UI/EnemyDeckComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxFbmVteURlY2tDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mason/source/repos/DeckBuilder/DeckBuilder/Components/UI/PlayerHandComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxQbGF5ZXJIYW5kQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
